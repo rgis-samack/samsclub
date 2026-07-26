@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sam's Club — Gerador de Crachás de Inventário | by Samack 697</title>
+    <link rel="icon" type="image/x-icon" href="app_logo.ico">
+    <link rel="stylesheet" href="style.css">
+    <!-- Dependências CDN para Processamento Excel, PDF e Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Overlay de Drag & Drop em Toda a Tela -->
+    <div id="drag-overlay">
+        <div style="font-size: 3rem;">📥</div>
+        <div>SOLTE SUA PLANILHA AQUI (.CSV / .XLSX / .XLSM)</div>
+        <div style="font-size: 0.85rem; font-weight: normal;">Sam's Club Inventory System • by Samack 697</div>
+    </div>
+
+    <!-- 1. Cabeçalho Oficial Sam's Club -->
+    <header>
+        <div class="header-left">
+            <img src="2138138.png" alt="Sam's Club Logo">
+            <span class="header-title">SAM'S CLUB</span>
+            <span class="header-subtitle"> | Gerador de Crachás</span>
+        </div>
+        <div class="header-credit">by Samack 697</div>
+    </header>
+
+    <!-- 2. Conteúdo Principal -->
+    <main>
+        <!-- Card 1: Importação e Faixa de Áreas -->
+        <section class="card">
+            <div class="card-title">
+                <span>Importação & Faixa de Áreas</span>
+                <span class="card-subtitle-text">Sam's Club Inventory System • by Samack 697</span>
+            </div>
+
+            <div class="import-row">
+                <button id="btn-file-select" class="btn btn-navy">📁 Importar Planilha (Excel/CSV)...</button>
+                <input type="file" id="file-input" accept=".csv, .xlsx, .xlsm, .xls" style="display: none;">
+                <span id="status-text" class="status-label">Nenhuma planilha carregada (Arraste o arquivo aqui).</span>
+            </div>
+
+            <div class="filter-row">
+                <label for="input-inicio">Início:</label>
+                <input type="text" id="input-inicio" placeholder="Ex: 241">
+
+                <label for="input-fim" style="margin-left: 6px;">Fim:</label>
+                <input type="text" id="input-fim" placeholder="Ex: 245">
+
+                <span class="filter-help">(Opcional. Em branco = todas as áreas)</span>
+            </div>
+        </section>
+
+        <!-- Card 2: Telemetria & Informações Visuais (4 Cards Responsivos 2x2 no Celular) -->
+        <section class="telemetry-grid">
+            <div class="metric-card">
+                <span class="title">📊 TOTAL DE ITENS</span>
+                <span id="val-total-itens" class="value val-cyan">0 itens</span>
+            </div>
+            <div class="metric-card">
+                <span class="title">📌 ÁREAS SEQUENCIAIS</span>
+                <span id="val-total-areas" class="value val-green">0 Áreas</span>
+            </div>
+            <div class="metric-card">
+                <span class="title">⚡ PÁGINAS (DUPLO)</span>
+                <span id="val-pags-duplo" class="value val-green">0 págs A4</span>
+            </div>
+            <div class="metric-card">
+                <span class="title">📄 PÁGINAS (ÚNICO)</span>
+                <span id="val-pags-unico" class="value val-amber">0 págs A4</span>
+            </div>
+        </section>
+
+        <!-- Card 3: Tabela de Dados Carregados -->
+        <section class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="center" style="width: 100px;">TAG (Área)</th>
+                        <th style="width: 160px;">Contador</th>
+                        <th class="center" style="width: 120px;">Código Produto</th>
+                        <th>Descrição do Produto</th>
+                        <th class="center" style="width: 90px;">Qtd</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr>
+                        <td colspan="5" class="center" style="padding: 30px; color: var(--text-muted);">
+                            Nenhum dado carregado. Importe ou solte um arquivo .csv ou .xlsx na tela.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- 3. Rodapé de Ações Fixo e Responsivo -->
+    <footer>
+        <button id="btn-gerar-duplo" class="btn btn-green">⚡ Gerar Crachás Duplos (Prioritário)</button>
+        <button id="btn-gerar-unico" class="btn btn-navy">📋 Gerar Crachás Únicos</button>
+        <div class="footer-secondary-group">
+            <button id="btn-abrir-pdf" class="btn btn-secondary" disabled>📄 Abrir / Baixar PDF</button>
+            <button id="btn-imprimir-pdf" class="btn btn-secondary" disabled>🖨️ Imprimir PDF</button>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

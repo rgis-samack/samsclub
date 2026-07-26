@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sam's Club — Dashboard Admin & Telemetria | by Samack 697</title>
+    <link rel="icon" type="image/x-icon" href="app_logo.ico">
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Header Bar Admin -->
+    <header>
+        <div class="header-left">
+            <img src="2138138.png" alt="Sam's Club Logo">
+            <span class="header-title">DASHBOARD ADMIN & TELEMETRIA</span>
+        </div>
+        <div class="header-credit">by Samack 697</div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Card 1: Painel do Kill-Switch -->
+        <section class="card">
+            <div class="card-title">
+                <span>CONTROLE REMOTO NACIONAL</span>
+                <span id="lbl-status-badge" class="btn btn-navy" style="cursor: default;">CONSULTANDO...</span>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
+                <button id="btn-toggle-kill" class="btn btn-red" style="flex: 1; min-width: 200px;">🔴 BLOQUEAR PROGRAMA NACIONAL</button>
+                <div class="footer-secondary-group" style="flex: 1;">
+                    <button id="btn-refresh" class="btn btn-secondary">🔄 Atualizar Logs</button>
+                    <button id="btn-sql-script" class="btn btn-secondary">🛠️ Script SQL</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card 2: Tabela de Logs e Telemetria em Tempo Real -->
+        <section class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 130px;">Data / Hora</th>
+                        <th class="center" style="width: 95px;">Status</th>
+                        <th class="center" style="width: 115px;">IP Público</th>
+                        <th style="width: 140px;">Cidade / Estado</th>
+                        <th style="width: 160px;">Provedor / Operadora</th>
+                        <th style="width: 120px;">Nome PC</th>
+                        <th style="width: 110px;">Usuário</th>
+                        <th style="width: 140px;">Hardware ID</th>
+                    </tr>
+                </thead>
+                <tbody id="logs-table-body">
+                    <tr>
+                        <td colspan="8" class="center" style="padding: 30px; color: var(--text-muted);">
+                            Carregando logs do Supabase...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <span id="footer-status" style="font-size: 0.82rem; color: var(--text-muted);">Conectado ao Supabase (https://euvhtrwbyxjezbwwwbxb.supabase.co)</span>
+        <span style="margin-left: auto; font-weight: 700; font-size: 0.82rem; color: var(--navy-primary);">Sam's Club Inventory System • by Samack 697</span>
+    </footer>
+
+    <!-- Modal Script SQL -->
+    <div id="modal-sql" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span>Script de Tabelas SQL — Supabase Setup</span>
+                <button id="btn-close-modal" class="btn btn-secondary" style="padding: 2px 8px;">✕</button>
+            </div>
+            <div class="modal-body" id="sql-content"></div>
+            <button id="btn-copy-sql" class="btn btn-green">📋 Copiar Script SQL para a Área de Transferência</button>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
