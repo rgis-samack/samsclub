@@ -5,6 +5,8 @@
 [![Language: English](https://img.shields.io/badge/Language-English-00A3E0.svg)](#-english)
 
 https://rgis-samack.github.io/samsclub/
+
+
 <img width="597" height="842" alt="image" src="https://github.com/user-attachments/assets/3c85352b-6841-45ad-b1fd-c454be5c9dcd" />
 
 ---
