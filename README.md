@@ -4,6 +4,8 @@
 [![Language: Portuguese](https://img.shields.io/badge/Idioma-Português-002D62.svg)](#-português-brasil)
 [![Language: English](https://img.shields.io/badge/Language-English-00A3E0.svg)](#-english)
 
+https://rgis-samack.github.io/samsclub/
+
 ---
 
 ## 🇧🇷 Português (Brasil)
