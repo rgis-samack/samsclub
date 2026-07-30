@@ -318,6 +318,17 @@ function atualizarListaFiltrada() {
         });
     }
 
+    const emptyContainer = document.getElementById("empty-state-container");
+    const dataTable = document.getElementById("data-table");
+
+    if (filtrados && filtrados.length > 0) {
+        if (emptyContainer) emptyContainer.style.display = "none";
+        if (dataTable) dataTable.style.display = "table";
+    } else {
+        if (emptyContainer) emptyContainer.style.display = "flex";
+        if (dataTable) dataTable.style.display = "none";
+    }
+
     const tbody = document.getElementById("table-body");
     tbody.innerHTML = "";
 

@@ -78,12 +78,58 @@ header {
     font-weight: 600;
 }
 
-.header-credit {
-    font-size: 0.88rem;
-    font-weight: 700;
-    font-style: italic;
+/* Creator Badge Signature (Destaque de Autoria do Criador) */
+.creator-badge {
+    background: rgba(0, 163, 224, 0.15);
+    border: 1.5px solid var(--cyan-accent);
+    border-radius: 20px;
+    padding: 4px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 163, 224, 0.2);
+}
+
+.creator-badge:hover {
+    background: rgba(0, 163, 224, 0.3);
+    border-color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 163, 224, 0.4);
+    transform: translateY(-1px);
+}
+
+.creator-sparkle {
+    font-size: 0.95rem;
+    animation: pulseSparkle 2s infinite ease-in-out;
+}
+
+@keyframes pulseSparkle {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.25); opacity: 0.85; }
+}
+
+.creator-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0.2px;
+}
+
+.creator-text b {
     color: var(--cyan-accent);
-    white-space: nowrap;
+    font-weight: 900;
+}
+
+.creator-subtag {
+    background: var(--navy-primary);
+    color: var(--cyan-accent);
+    font-size: 0.68rem;
+    font-weight: 900;
+    padding: 1px 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 163, 224, 0.5);
+    letter-spacing: 0.5px;
 }
 
 /* 2. Main Content Area */
@@ -324,6 +370,47 @@ main {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+/* Animated Sam's Club Watermark Logo Placeholder (Empty State) */
+.empty-hero-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    gap: 16px;
+    min-height: 280px;
+    width: 100%;
+    animation: heroWatermarkFloat 3.5s ease-in-out infinite;
+}
+
+.animated-hero-logo {
+    max-width: 220px;
+    height: auto;
+    mix-blend-mode: multiply; /* Remove o fundo quadrado branco tornando a imagem 100% fluida! */
+    opacity: 0.9;
+    filter: contrast(1.05);
+}
+
+@keyframes heroWatermarkFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-9px) scale(1.03);
+        opacity: 1;
+    }
+}
+
+.empty-hero-title {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--navy-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 table {

@@ -27,7 +27,11 @@
             <span class="header-title">SAM'S CLUB</span>
             <span class="header-subtitle"> | Gerador de Crachás de Inventário</span>
         </div>
-        <div class="header-credit">by Samack 697</div>
+        <div class="creator-badge" title="Ferramenta Oficial de Automação de Inventário">
+            <span class="creator-sparkle">⚡</span>
+            <span class="creator-text">Desenvolvido por <b>Samack 697</b></span>
+            <span class="creator-subtag">RGIS</span>
+        </div>
     </header>
 
     <!-- 2. Conteúdo Principal -->
@@ -92,9 +96,16 @@
             </div>
         </section>
 
-        <!-- Card 3: Tabela de Dados Carregados -->
+        <!-- Card 3: Tabela de Dados Carregados & Logo Animado (Empty State) -->
         <section class="table-container">
-            <table>
+            <!-- Logo Animado Sam's Club em Marca d'Água (Exibido até importar a planilha) -->
+            <div id="empty-state-container" class="empty-hero-box">
+                <img src="sams_logo_hero.png" alt="Sam's Club Logo" class="animated-hero-logo">
+                <div class="empty-hero-title">FAÇA O UPLOAD DO ARQUIVO CONSOLIDADO</div>
+            </div>
+
+            <!-- Tabela de Dados (Oculta até a planilha ser carregada) -->
+            <table id="data-table" style="display: none;">
                 <thead>
                     <tr>
                         <th class="center" style="width: 100px;">TAG (Área)</th>
@@ -104,13 +115,7 @@
                         <th class="center" style="width: 90px;">Qtd</th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
-                    <tr>
-                        <td colspan="5" class="center" style="padding: 30px; color: var(--text-muted);">
-                            Nenhum dado carregado. Importe ou solte um arquivo .csv ou .xlsx na tela.
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="table-body"></tbody>
             </table>
         </section>
     </main>

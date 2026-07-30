@@ -6,9 +6,6 @@
 
 ---
 
-https://rgis-samack.github.io/samsclub/
-
-
 ## 🇧🇷 Português (Brasil)
 
 ### 📌 O que é este Projeto?
