@@ -154,8 +154,8 @@ function configurarEventos() {
         }
     });
 
-    document.getElementById("btn-gerar-duplo").addEventListener("click", () => gerarPdfWeb(true));
-    document.getElementById("btn-gerar-unico").addEventListener("click", () => gerarPdfWeb(false));
+    document.getElementById("btn-gerar-duplo")?.addEventListener("click", () => gerarPdfWeb(true));
+    document.getElementById("btn-gerar-unico")?.addEventListener("click", () => gerarPdfWeb(false));
 
     document.getElementById("btn-abrir-pdf").addEventListener("click", () => {
         if (currentPdfBlobUrl) window.open(currentPdfBlobUrl, "_blank");
@@ -346,7 +346,8 @@ function atualizarListaFiltrada() {
     document.getElementById("val-total-itens").innerText = totalProdutos.toLocaleString("pt-BR") + " itens";
     document.getElementById("val-total-areas").innerText = areasSet.size + " Áreas";
     document.getElementById("val-pags-duplo").innerText = pagsDuplo + " págs A4";
-    document.getElementById("val-pags-unico").innerText = pagsUnico + " págs A4";
+    const elemUnico = document.getElementById("val-pags-unico");
+    if (elemUnico) elemUnico.innerText = pagsUnico + " págs A4";
 }
 
 // 6. Gerador Vetorial PDF no Navegador — RÉPLICA 100% EXATA de _desenhar_cracha_padrao em crachas_core.py
@@ -421,7 +422,7 @@ function desenharCrachaExato(doc, cracha, isFirstPage = false) {
     if (isFirstPage) {
         doc.setFont("helvetica", "bold");
         doc.setFontSize(12);
-        doc.setTextColor(0, 45, 98); // Azul Sam's Club #002D62
+        doc.setTextColor(0, 45, 98);
         doc.text("by Samack 697", X_LEFT, 32);
     }
 
@@ -429,7 +430,7 @@ function desenharCrachaExato(doc, cracha, isFirstPage = false) {
     doc.setDrawColor(0, 0, 0);
     doc.setTextColor(0, 0, 0);
 
-    // 2. Borda Externa do Cartão (X_LEFT = 38.3, Y_TOP = 56.2, W = 505.1, H = 720.6)
+    // 2. Borda Externa do Cartão
     doc.rect(X_LEFT, 56.2, W, 720.6);
 
     // Linhas Horizontais Divisórias Exatas
@@ -451,31 +452,25 @@ function desenharCrachaExato(doc, cracha, isFirstPage = false) {
     doc.text("NOME:", X_LEFT + 4, 175);
     drawAutoFitTextJS(doc, cracha.nome, "normal", 28, 12, X_RIGHT - (X_LEFT + 175), X_LEFT + 171, 172, "left");
 
-    // Produtos do crachá (máximo 2 produtos)
     const prods = cracha.produtos || [];
     const prod1 = prods[0] || { codigo: "0", descricao: "0", quantidade: "0" };
     const prod2 = prods[1] || null;
 
     // --- ITEM 1 ---
-    // Descrição Header 1
     doc.setFont("helvetica", "normal");
     doc.setFontSize(24);
     doc.text("DESCRIÇÃO", X_LEFT + W / 2, 215, { align: "center" });
 
-    // Descrição Value 1 (Auto-fit)
     drawAutoFitTextJS(doc, prod1.descricao, "bold", 28, 10, W - 28, X_LEFT + W / 2, 262, "center");
 
-    // Produto / Quantidade Header 1
     doc.setFont("helvetica", "normal");
     doc.setFontSize(26);
     doc.text("PRODUTO", X_LEFT + 30, 315);
     doc.text("QUANTIDADE", X_RIGHT - 12, 315, { align: "right" });
 
-    // Produto / Quantidade Values 1
     drawAutoFitTextJS(doc, fmtNum(prod1.codigo), "bold", 62, 20, 250, X_LEFT + 73, 395, "left");
     drawAutoFitTextJS(doc, fmtNum(prod1.quantidade), "bold", 48, 16, 140, X_RIGHT - 50, 395, "right");
 
-    // Validade 1
     doc.setFont("helvetica", "normal");
     doc.setFontSize(24);
     doc.text("VALIDADE", X_LEFT + 34, 468);
@@ -486,26 +481,21 @@ function desenharCrachaExato(doc, cracha, isFirstPage = false) {
     const p2_cod = prod2 ? fmtNum(prod2.codigo) : "0";
     const p2_qtd = prod2 ? fmtNum(prod2.quantidade) : "0";
 
-    // Descrição Header 2
     doc.setFont("helvetica", "normal");
     doc.setFontSize(24);
     doc.text("DESCRIÇÃO", X_LEFT + W / 2, 508, { align: "center" });
 
-    // Descrição Value 2 (Auto-fit)
     drawAutoFitTextJS(doc, p2_desc, "bold", 28, 10, W - 28, X_LEFT + W / 2, 555, "center");
 
-    // Produto / Quantidade Header 2
     doc.setFont("helvetica", "normal");
     doc.setFontSize(26);
     doc.text("PRODUTO", X_LEFT + 30, 608);
     doc.text("QUANTIDADE", X_RIGHT - 12, 608, { align: "right" });
 
-    // Produto / Quantidade Values 2
     const x_cod2 = (p2_cod !== "0") ? (X_LEFT + 73) : (X_LEFT + 152);
     drawAutoFitTextJS(doc, p2_cod, "bold", 62, 20, 250, x_cod2, 688, "left");
     drawAutoFitTextJS(doc, p2_qtd, "bold", 48, 16, 140, X_RIGHT - 50, 688, "right");
 
-    // Validade 2
     doc.setFont("helvetica", "normal");
     doc.setFontSize(24);
     doc.text("VALIDADE", X_LEFT + 34, 761);

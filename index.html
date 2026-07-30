@@ -15,9 +15,9 @@
 
     <!-- Overlay de Drag & Drop em Toda a Tela -->
     <div id="drag-overlay">
-        <div style="font-size: 3rem;">📥</div>
+        <div style="font-size: 3.5rem;">📥</div>
         <div>SOLTE SUA PLANILHA AQUI (.CSV / .XLSX / .XLSM)</div>
-        <div style="font-size: 0.85rem; font-weight: normal;">Sam's Club Inventory System • by Samack 697</div>
+        <div style="font-size: 0.9rem; font-weight: normal; opacity: 0.9;">Sam's Club Inventory System • by Samack 697</div>
     </div>
 
     <!-- 1. Cabeçalho Oficial Sam's Club -->
@@ -25,38 +25,58 @@
         <div class="header-left">
             <img src="2138138.png" alt="Sam's Club Logo">
             <span class="header-title">SAM'S CLUB</span>
-            <span class="header-subtitle"> | Gerador de Crachás</span>
+            <span class="header-subtitle"> | Gerador de Crachás de Inventário</span>
         </div>
         <div class="header-credit">by Samack 697</div>
     </header>
 
     <!-- 2. Conteúdo Principal -->
     <main>
-        <!-- Card 1: Importação e Faixa de Áreas -->
-        <section class="card">
+        <!-- Card 1: Importação & Faixa de Áreas (Destaque Visual Aprimorado) -->
+        <section class="card card-highlight">
             <div class="card-title">
-                <span>Importação & Faixa de Áreas</span>
-                <span class="card-subtitle-text">Sam's Club Inventory System • by Samack 697</span>
+                <span class="card-title-main">
+                    <span class="card-title-icon">📥</span>
+                    IMPORTAÇÃO & FAIXA DE ÁREAS
+                </span>
+                <span class="badge-tag">FORMATOS SUPORTADOS: .XLSX / .CSV / .XLSM</span>
             </div>
 
-            <div class="import-row">
-                <button id="btn-file-select" class="btn btn-navy">📁 Importar Planilha (Excel/CSV)...</button>
-                <input type="file" id="file-input" accept=".csv, .xlsx, .xlsm, .xls" style="display: none;">
-                <span id="status-text" class="status-label">Nenhuma planilha carregada (Arraste o arquivo aqui).</span>
-            </div>
+            <div class="import-container">
+                <!-- Linha Superior: Botão Principal de Importação + Caixa de Status -->
+                <div class="import-action-zone">
+                    <button id="btn-file-select" class="btn btn-hero-import">
+                        <span class="btn-icon">📁</span>
+                        <span>Importar Planilha (Excel/CSV)...</span>
+                    </button>
+                    <input type="file" id="file-input" accept=".csv, .xlsx, .xlsm, .xls" style="display: none;">
+                    
+                    <div class="status-badge-box">
+                        <span class="status-icon">📄</span>
+                        <span id="status-text" class="status-label">Nenhuma planilha carregada (Arraste o arquivo aqui).</span>
+                    </div>
+                </div>
 
-            <div class="filter-row">
-                <label for="input-inicio">Início:</label>
-                <input type="text" id="input-inicio" placeholder="Ex: 241">
+                <!-- Linha Inferior: Filtros de Área (Início e Fim) Destacados -->
+                <div class="filter-group-box">
+                    <div class="filter-item">
+                        <label for="input-inicio" class="filter-label">📌 Área Inicial:</label>
+                        <input type="text" id="input-inicio" class="input-highlight" placeholder="Ex: 241">
+                    </div>
 
-                <label for="input-fim" style="margin-left: 6px;">Fim:</label>
-                <input type="text" id="input-fim" placeholder="Ex: 245">
+                    <div class="filter-item">
+                        <label for="input-fim" class="filter-label">📌 Área Final:</label>
+                        <input type="text" id="input-fim" class="input-highlight" placeholder="Ex: 245">
+                    </div>
 
-                <span class="filter-help">(Opcional. Em branco = todas as áreas)</span>
+                    <div class="filter-help-box">
+                        💡 <span><b>Dica:</b> Deixe em branco para incluir todas as áreas do inventário.</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Card 2: Telemetria & Informações Visuais (4 Cards Responsivos 2x2 no Celular) -->
+        <!-- Card 2: Telemetria & Informações Visuais (3 Cards Responsivos) -->
         <section class="telemetry-grid">
             <div class="metric-card">
                 <span class="title">📊 TOTAL DE ITENS</span>
@@ -67,12 +87,8 @@
                 <span id="val-total-areas" class="value val-green">0 Áreas</span>
             </div>
             <div class="metric-card">
-                <span class="title">⚡ PÁGINAS (DUPLO)</span>
+                <span class="title">⚡ TOTAL PÁGINAS A4</span>
                 <span id="val-pags-duplo" class="value val-green">0 págs A4</span>
-            </div>
-            <div class="metric-card">
-                <span class="title">📄 PÁGINAS (ÚNICO)</span>
-                <span id="val-pags-unico" class="value val-amber">0 págs A4</span>
             </div>
         </section>
 
@@ -101,8 +117,7 @@
 
     <!-- 3. Rodapé de Ações Fixo e Responsivo -->
     <footer>
-        <button id="btn-gerar-duplo" class="btn btn-green">⚡ Gerar Crachás Duplos (Prioritário)</button>
-        <button id="btn-gerar-unico" class="btn btn-navy">📋 Gerar Crachás Únicos</button>
+        <button id="btn-gerar-duplo" class="btn btn-green">⚡ Gerar Crachás de Inventário (PDF A4)</button>
         <div class="footer-secondary-group">
             <button id="btn-abrir-pdf" class="btn btn-secondary" disabled>📄 Abrir / Baixar PDF</button>
             <button id="btn-imprimir-pdf" class="btn btn-secondary" disabled>🖨️ Imprimir PDF</button>

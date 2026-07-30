@@ -1,13 +1,16 @@
 /* ===============================================================================
-   SAM'S CLUB INVENTORY SYSTEM — RESPONSIVE MOBILE STYLESHEET
-   Design System: Sam's Club Classic Navy & Responsive Touch Controls
+   SAM'S CLUB INVENTORY SYSTEM — RESPONSIVE MOBILE & DESKTOP STYLESHEET
+   Design System: Sam's Club Classic Navy & High-Impact Highlighting
    by Samack 697 | RGIS 2026
 =============================================================================== */
 
 :root {
     --navy-primary: #002D62;
     --navy-hover: #001D42;
+    --navy-gradient: linear-gradient(135deg, #002D62 0%, #004085 100%);
     --cyan-accent: #00A3E0;
+    --cyan-hover: #0082B3;
+    --cyan-soft-bg: #E6F6FC;
     --green-primary: #00843D;
     --green-hover: #006830;
     --red-alert: #DC2626;
@@ -39,14 +42,14 @@ body {
 
 /* 1. Header Bar */
 header {
-    background-color: var(--navy-primary);
+    background: var(--navy-gradient);
     color: white;
     min-height: 58px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 14px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 8px 16px;
+    box-shadow: 0 3px 10px rgba(0, 45, 98, 0.25);
     flex-shrink: 0;
 }
 
@@ -63,7 +66,7 @@ header {
 }
 
 .header-title {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 900;
     color: white;
     letter-spacing: 0.5px;
@@ -88,90 +91,202 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 10px 12px;
-    gap: 8px;
+    padding: 12px 14px;
+    gap: 10px;
     overflow: hidden;
 }
 
-/* Cards Containers */
+/* Base Card Container */
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 10px 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
+/* Card Header Title Bar */
 .card-title {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 800;
     color: var(--navy-primary);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.card-subtitle-text {
-    font-weight: normal;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-/* Top Panel Import & Limits */
-.import-row {
+.card-title-main {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+}
+
+.card-title-icon {
+    font-size: 1.1rem;
+}
+
+/* Badge Format Info Tag */
+.badge-tag {
+    background: var(--cyan-soft-bg);
+    color: var(--navy-primary);
+    border: 1px solid rgba(0, 163, 224, 0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+/* ===============================================================================
+   🔥 DESTAQUE ESPECIAL DA SEÇÃO DE IMPORTAÇÃO & FAIXA DE ÁREAS (CARD HIGHLIGHT)
+=============================================================================== */
+.card-highlight {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 2px solid #94A3B8;
+    border-top: 4px solid var(--navy-primary);
+    box-shadow: 0 4px 14px rgba(0, 45, 98, 0.08);
+    transition: all 0.25s ease-in-out;
+}
+
+.card-highlight:hover {
+    border-color: var(--cyan-accent);
+    box-shadow: 0 6px 18px rgba(0, 163, 224, 0.15);
+}
+
+.import-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Linha Superior: Botão Hero + Caixa de Status em Destaque */
+.import-action-zone {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     flex-wrap: wrap;
 }
 
-.status-label {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--text-muted);
+/* Botão Hero de Importação (Destaque Principal) */
+.btn-hero-import {
+    background: var(--navy-gradient);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 45, 98, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-hero-import:hover {
+    background: linear-gradient(135deg, #001D42 0%, #002D62 100%);
+    box-shadow: 0 6px 16px rgba(0, 45, 98, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-hero-import .btn-icon {
+    font-size: 1.15rem;
+}
+
+/* Caixa de Status da Planilha */
+.status-badge-box {
     flex: 1;
+    min-width: 260px;
+    background: #F0F7FF;
+    border: 1.5px dashed var(--cyan-accent);
+    border-radius: 6px;
+    padding: 9px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.status-badge-box:hover {
+    background: #E6F4FF;
+    border-color: var(--navy-primary);
+}
+
+.status-icon {
+    font-size: 1.1rem;
+}
+
+.status-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--navy-primary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.filter-row {
+/* Linha Inferior: Grupo de Filtros de Áreas Destacados */
+.filter-group-box {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid var(--cyan-accent);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.filter-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--navy-primary);
-    flex-wrap: wrap;
 }
 
-.filter-row input {
-    width: 75px;
-    padding: 5px 8px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
+.filter-label {
     font-size: 0.88rem;
-    font-weight: bold;
+    font-weight: 800;
+    color: var(--navy-primary);
+}
+
+/* Inputs com Destaque Neon/Glow */
+.input-highlight {
+    width: 90px;
+    padding: 7px 10px;
+    border: 2px solid #94A3B8;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 900;
     color: var(--navy-primary);
     text-align: center;
+    background-color: #FFFFFF;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.filter-help {
-    font-size: 0.78rem;
-    font-style: italic;
+.input-highlight:focus {
+    outline: none;
+    border-color: var(--cyan-accent);
+    box-shadow: 0 0 0 3px rgba(0, 163, 224, 0.25);
+    background-color: #F8FAFC;
+}
+
+.filter-help-box {
+    font-size: 0.82rem;
     color: var(--text-muted);
-    font-weight: normal;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Telemetry Grid Bar */
 .telemetry-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -179,9 +294,10 @@ main {
     background: white;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 6px 10px;
+    padding: 8px 12px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .metric-card .title {
@@ -191,7 +307,7 @@ main {
 }
 
 .metric-card .value {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
 }
 
@@ -207,6 +323,7 @@ main {
     border-radius: 6px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 table {
@@ -249,10 +366,10 @@ tr:hover {
 footer {
     background-color: var(--bg-main);
     border-top: 1px solid var(--border-color);
-    padding: 8px 12px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
     flex-shrink: 0;
 }
@@ -260,11 +377,11 @@ footer {
 /* Animated Hover Buttons */
 .btn {
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 700;
     border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
+    border-radius: 6px;
+    padding: 9px 14px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     display: inline-flex;
@@ -286,7 +403,7 @@ footer {
 
 .btn-green:hover {
     background-color: var(--green-hover);
-    box-shadow: 0 2px 6px rgba(0, 132, 61, 0.3);
+    box-shadow: 0 3px 8px rgba(0, 132, 61, 0.35);
 }
 
 .btn-navy {
@@ -296,7 +413,7 @@ footer {
 
 .btn-navy:hover {
     background-color: var(--navy-hover);
-    box-shadow: 0 2px 6px rgba(0, 45, 98, 0.3);
+    box-shadow: 0 3px 8px rgba(0, 45, 98, 0.35);
 }
 
 .btn-secondary {
@@ -383,7 +500,7 @@ footer {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 45, 98, 0.88);
+    background: rgba(0, 45, 98, 0.92);
     color: white;
     font-size: 1.4rem;
     font-weight: 900;
@@ -420,7 +537,7 @@ footer {
     }
 
     .header-subtitle {
-        display: none; /* Oculta subtítulo secundário no smartphone */
+        display: none;
     }
 
     .header-title {
@@ -431,46 +548,49 @@ footer {
         overflow: visible;
     }
 
-    /* Oculta texto longo desnecessário do cabeçalho do card no celular */
-    .card-subtitle-text {
+    .badge-tag {
         display: none;
     }
 
-    .import-row {
+    .import-action-zone {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .import-row .btn {
+    .btn-hero-import {
         width: 100%;
-        padding: 10px;
     }
 
-    .status-label {
+    .status-badge-box {
         width: 100%;
+        min-width: 0;
+        justify-content: center;
+    }
+
+    .filter-group-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-item {
+        justify-content: space-between;
+    }
+
+    .input-highlight {
+        width: 100px;
+    }
+
+    .filter-help-box {
+        margin-left: 0;
         text-align: center;
-        margin-top: 4px;
+        justify-content: center;
     }
 
-    .filter-row {
-        justify-content: flex-start;
-    }
-
-    /* Transforma a grid de 4 cards em 2x2 no Smartphone */
     .telemetry-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
 
-    .metric-card .title {
-        font-size: 0.68rem;
-    }
-
-    .metric-card .value {
-        font-size: 1rem;
-    }
-
-    /* Rodapé Responsivo em Smartphones */
     footer {
         flex-direction: column;
         align-items: stretch;
