@@ -6,8 +6,6 @@
 
 
  https://rgis-samack.github.io/samsclub/
-     https://rgis-samack.github.io/samsclub/ 
-         https://rgis-samack.github.io/samsclub/
 ---
 
 ## 🇧🇷 Português (Brasil)
