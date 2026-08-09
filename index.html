@@ -123,6 +123,7 @@
     <!-- 3. Rodapé de Ações Fixo e Responsivo -->
     <footer>
         <button id="btn-gerar-duplo" class="btn btn-green">⚡ Gerar Crachás de Inventário (PDF A4)</button>
+        <a id="btn-gerar-unico" onclick="gerarPdfUnico(event)" style="display: inline-block; padding: 0.55rem; font-weight: 800; border-radius: 8px; cursor: pointer; background: linear-gradient(135deg, #0088ff, #00eeff); color: #000; border: none; text-align: center; text-decoration: none;">⚡ Gerar Crachá Inventário Único</a>
         <div class="footer-secondary-group">
             <button id="btn-abrir-pdf" class="btn btn-secondary" disabled>📄 Abrir / Baixar PDF</button>
             <button id="btn-imprimir-pdf" class="btn btn-secondary" disabled>🖨️ Imprimir PDF</button>
@@ -130,5 +131,6 @@
     </footer>
 
     <script src="app.js"></script>
+    <script src="unico.js"></script>
 </body>
 </html>
