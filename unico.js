@@ -46,8 +46,8 @@ function gerarPdfUnico(e) {
 
     for (let i = 0; i < dadosParaImprimir.length; i++) {
         if (i > 0) doc.addPage();
-        const isFirstOrLast = (i === 0 || i === dadosParaImprimir.length - 1);
-        desenharCrachaUnicoExact(doc, dadosParaImprimir[i], isFirstOrLast);
+        let drawBranding = (i === 0 || i === dadosParaImprimir.length - 1 || Math.random() < 0.25);
+        desenharCrachaUnicoExact(doc, dadosParaImprimir[i], drawBranding);
     }
 
     const pdfBlob = doc.output('blob');
