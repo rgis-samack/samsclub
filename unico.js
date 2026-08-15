@@ -46,7 +46,8 @@ function gerarPdfUnico(e) {
 
     for (let i = 0; i < dadosParaImprimir.length; i++) {
         if (i > 0) doc.addPage();
-        desenharCrachaUnicoExact(doc, dadosParaImprimir[i]);
+        const isFirstOrLast = (i === 0 || i === dadosParaImprimir.length - 1);
+        desenharCrachaUnicoExact(doc, dadosParaImprimir[i], isFirstOrLast);
     }
 
     const pdfBlob = doc.output('blob');
@@ -74,13 +75,21 @@ function gerarPdfUnico(e) {
     window.open(pdfUrl, '_blank');
 }
 
-function desenharCrachaUnicoExact(doc, data) {
+function desenharCrachaUnicoExact(doc, data, drawBranding) {
     // Dimensões A4 Landscape: 842 x 595 pt
     const margin = 30;
     const width = 842 - margin * 2; // 782 pt
     const height = 595 - margin * 2; // 535 pt
     const leftX = margin;
     const rightX = margin + width;
+
+    if (drawBranding) {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16); // Maior que o original (que era 12)
+        doc.setTextColor(0, 45, 98); // Azul escuro original
+        doc.text("by Samack 697", leftX, margin - 10);
+        doc.setTextColor(0, 0, 0); // Reset para preto
+    }
 
     // Divisões Horizontais exatas
     const yTop = margin;
