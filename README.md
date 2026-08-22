@@ -5,7 +5,8 @@
 [![Language: English](https://img.shields.io/badge/Language-English-00A3E0.svg)](#-english)
 
 
- https://rgis-samack.github.io/samsclub/
+ https://rgis-samack.github.io/samsclub/ 
+ https://bit.ly/samsclubrgis
 ---
 
 ## 🇧🇷 Português (Brasil)
