@@ -78,50 +78,6 @@ header {
     font-weight: 600;
 }
 
-.header-right-zone {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* Atalho Corporativo Assaí Atacadista no Header */
-.assai-shortcut-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem 0.35rem 0.45rem;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(243, 112, 33, 0.25) 0%, rgba(227, 6, 19, 0.38) 100%);
-    border: 1.5px solid rgba(243, 112, 33, 0.65);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.assai-shortcut-card:hover {
-    transform: translateY(-2px) scale(1.04);
-    background: linear-gradient(135deg, rgba(243, 112, 33, 0.45) 0%, rgba(227, 6, 19, 0.58) 100%);
-    border-color: #ff9933;
-    box-shadow: 0 4px 16px rgba(243, 112, 33, 0.55);
-}
-
-.assai-shortcut-img {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-    border-radius: 6px;
-    display: block;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-}
-
-.assai-shortcut-label {
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 0.3px;
-}
-
 /* Creator Badge Signature (Destaque de Autoria do Criador) */
 .creator-badge {
     background: rgba(0, 163, 224, 0.15);
