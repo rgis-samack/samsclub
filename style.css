@@ -422,16 +422,16 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 24px 20px;
     text-align: center;
-    gap: 16px;
-    min-height: 280px;
+    gap: 12px;
+    min-height: 210px;
     width: 100%;
     animation: heroWatermarkFloat 3.5s ease-in-out infinite;
 }
 
 .animated-hero-logo {
-    max-width: 220px;
+    max-width: 190px;
     height: auto;
     mix-blend-mode: multiply; /* Remove o fundo quadrado branco tornando a imagem 100% fluida! */
     opacity: 0.9;
@@ -611,7 +611,7 @@ footer {
     align-items: center;
 }
 
-.modal-body {
+.modal-card .modal-body {
     flex: 1;
     overflow-y: auto;
     font-family: monospace;
@@ -894,4 +894,263 @@ footer {
 .support-ig:hover {
     box-shadow: 0 0 12px rgba(214, 36, 159, 0.7);
 }
+
+/* 4. Botão de Termos & Licença no Rodapé (Canto Inferior Esquerdo) */
+.btn-terms-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--navy-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 45, 98, 0.08);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.02em;
+    margin-right: auto;
+}
+
+.btn-terms-link:hover {
+    background: #eef4fc;
+    border-color: var(--navy-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 45, 98, 0.18);
+}
+
+/* 5. Modal Corporativo de Termos de Uso & Licença Comercial */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-dialog {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 24px 60px rgba(0, 45, 98, 0.25);
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.95) translateY(12px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+}
+
+.modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-shield-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0, 45, 98, 0.08);
+    color: var(--navy-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.modal-title {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--navy-primary);
+}
+
+.modal-subtitle {
+    font-size: 0.76rem;
+    color: #64748b;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(211, 47, 47, 0.1);
+    color: var(--red-alert);
+}
+
+.modal-dialog .modal-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    color: #334155;
+    background: #ffffff;
+    font-family: inherit;
+    white-space: normal;
+    line-height: 1.6;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.legal-badge-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.legal-badge-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    background: rgba(0, 132, 61, 0.1);
+    color: var(--green-primary);
+    border: 1px solid rgba(0, 132, 61, 0.3);
+}
+
+.legal-badge-pill.danger {
+    background: rgba(211, 47, 47, 0.08);
+    color: var(--red-alert);
+    border-color: rgba(211, 47, 47, 0.25);
+}
+
+.legal-badge-pill.law {
+    background: rgba(0, 45, 98, 0.08);
+    color: var(--navy-primary);
+    border-color: rgba(0, 45, 98, 0.2);
+}
+
+.modal-text-content h4 {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--navy-primary);
+    margin: 12px 0 4px 0;
+}
+
+.modal-text-content p {
+    margin-bottom: 8px;
+    color: #475569;
+}
+
+.legal-contact-card {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 45, 98, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legal-contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.legal-contact-label {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.legal-contact-email {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--navy-primary);
+    font-family: monospace;
+}
+
+.btn-legal-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy-primary);
+    color: #ffffff;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 45, 98, 0.25);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-legal-contact:hover {
+    background: var(--navy-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 45, 98, 0.35);
+}
+
+.modal-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    gap: 12px;
+}
+
+.modal-footer-copy {
+    font-size: 0.74rem;
+    color: #64748b;
+}
+
 
